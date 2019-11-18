@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 maoG -- 2019-11-18 16:28
 - Revised design doc, making corrections to the site map connections and component map connections
 - Deleted API keys from design doc (oops)
+=======
+zouJ -- 2019-11-18 14:49
+- Removed API keys from the design doc
+>>>>>>> 764db3d56fce10d2a5ac96b87f1f8985f80a0998
 
 maoG -- 2019-11-18 00:05
 - Uploading first version of the design doc

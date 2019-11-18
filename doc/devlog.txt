@@ -1,2 +1,5 @@
+zouJ -- 2019-11-18 14:49
+- Removed API keys from the design doc
+
 maoG -- 2019-11-18 00:05
 - Uploading first version of the design doc

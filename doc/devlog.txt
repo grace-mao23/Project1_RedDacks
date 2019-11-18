@@ -1,2 +1,6 @@
+maoG -- 2019-11-18 16:28
+- Revised design doc, making corrections to the site map connections and component map connections
+- Deleted API keys from design doc (oops)
+
 maoG -- 2019-11-18 00:05
 - Uploading first version of the design doc

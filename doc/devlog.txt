@@ -1,2 +1,13 @@
+NicholS -- 2019-11-19 18:58
+- Made functions to establish database connection to flask
+- Made functions to to get info from the database and insert a new row into the database
+
+maoG -- 2019-11-18 16:28
+- Revised design doc, making corrections to the site map connections and component map connections
+- Deleted API keys from design doc (oops)
+
+zouJ -- 2019-11-18 14:49
+- Removed API keys from the design doc
+
 maoG -- 2019-11-18 00:05
 - Uploading first version of the design doc

@@ -1,4 +1,19 @@
-NicholS -- 2019-11-19 18:58
+RedDacks: Nahi Khan, Grace Mao, Sophie Nichol, Jackson Zou
+P#01 - ArRESTed Development
+SoftDev1 Pd9
+2019-1?-??
+
+maoG -- 2019-11-19 23:31
+- MAJOR CHANGES TO DESIGN DOC !!!!!!
+- Concept of project moved from random API keeping up with stuff to 
+actual news site, pulling from the NYT and the Guardian as well as News 
+API
+- At this point, component map and overview changed to reflect the new 
+setup of the site, though not too different from original setup
+- YET TO BE UPDATED: Sitemap, Database Diagram (PM will do soon)
+- ALSO NEEDED: Cards for the APIs
+
+nicholS -- 2019-11-19 18:58
 - Made functions to establish database connection to flask
 - Made functions to to get info from the database and insert a new row into the database
 

@@ -22,5 +22,8 @@ def newsapi(location):
         temp.append(l["author"])
         temp.append(l["description"])
         temp.append(l["url"])
+        temp.append(l["urlToImage"])
         final.append(temp)
     return final
+
+print(newsapi("us"))

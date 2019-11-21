@@ -3,12 +3,20 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+khanN -- 2019-11-20 21:30
+- created the raw files for all of the templates listed within the component map
+
+khanN -- 2019-11-20 20:11
+- Created template for base page (needed to be worked upon utilizing Foundation)
+- Created template for login page
+- Waiting on information on the set number of APIS
+
 maoG -- 2019-11-19 23:31
 - MAJOR CHANGES TO DESIGN DOC !!!!!!
-- Concept of project moved from random API keeping up with stuff to 
-actual news site, pulling from the NYT and the Guardian as well as News 
+- Concept of project moved from random API keeping up with stuff to
+actual news site, pulling from the NYT and the Guardian as well as News
 API
-- At this point, component map and overview changed to reflect the new 
+- At this point, component map and overview changed to reflect the new
 setup of the site, though not too different from original setup
 - YET TO BE UPDATED: Sitemap, Database Diagram (PM will do soon)
 - ALSO NEEDED: Cards for the APIs

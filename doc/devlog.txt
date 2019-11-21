@@ -3,6 +3,14 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+maoG -- 2019-11-20 23:29
+- New revision of the design doc, with updated site map and database 
+diagram
+- Check in with team: templates to be done for Friday (khanN), API 
+return values being analyzed (zouJ), database functions created + 
+waiting for zouJ to work together on API database (nicholS), cards to be 
+done for bit.ly/apikb1920 (maoG)
+
 zouJ -- 2019-11-20 23:09
 - Created apistuff.py for all methods that collect information from api's
 - Successfully created method for collecting articles from newsapi based on location (has to be in 2 letter code)

@@ -26,4 +26,5 @@ def newsapi(location):
         final.append(temp)
     return final
 
-print(newsapi("us"))
+def newyorktimesapi(location):
+    u = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM&sort=newest&fq=unitedstates&facet_filter=true"

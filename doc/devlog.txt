@@ -3,18 +3,23 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
-maoG -- 20190-11-20 22:50
+zouJ -- 2019-11-20 23:09
+- Created apistuff.py for all methods that collect information from api's
+- Successfully created method for collecting articles from newsapi based on location (has to be in 2 letter code)
+- Working on new york times api, it's a little bit weak and might be taken out
+
+maoG -- 2019-11-20 22:50
 Team Response to "Egoless Programming"
-This text was so enlightening and big brain. We'd like to think that 
-each person in our group has a good balance of those three major types 
-of personalities, but we can only dream. Instead, we will focus on 
-communicating with each other and really working hard to bring the 
+This text was so enlightening and big brain. We'd like to think that
+each person in our group has a good balance of those three major types
+of personalities, but we can only dream. Instead, we will focus on
+communicating with each other and really working hard to bring the
 entire project together. We will...
-   1. Forget the word I. There's no I. Only we. No my, just our. Our 
+   1. Forget the word I. There's no I. Only we. No my, just our. Our
 website. Our project. We made progress. Mr. Mykolyk, we think...
-   2. Use comms as liberally as the QAF and let each other know when we 
+   2. Use comms as liberally as the QAF and let each other know when we
 mess up or succeed or just need help (sighs)
-   3. Stop thinking of programming as some solitary action. Class time 
+   3. Stop thinking of programming as some solitary action. Class time
 is the perfect time to code collaboratively.
 
 khanN -- 2019-11-20 21:30

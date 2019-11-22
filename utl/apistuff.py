@@ -39,5 +39,3 @@ def getlocation(location):
     response = u.read()
     data = json.loads(response)
     return data[0]['alpha2Code']
-
-print(getlocation("united states"))

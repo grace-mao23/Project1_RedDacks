@@ -3,6 +3,13 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+maoG -- 2019-11-22 00:16
+- Working site created
+- Signup and logout both seemingly working
+- **Alarming issue!!!! Registering doesn't seem to connect with the 
+database... FIX ASAP
+- methods like authenticate logout and register written somewhat
+
 maoG -- 2019-11-21 23:56
 - New revision of design doc !!!!!
 - Countries API readded to component map, database diagram

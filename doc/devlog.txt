@@ -3,6 +3,10 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+maoG -- 2019-11-21 23:56
+- New revision of design doc !!!!!
+- Countries API readded to component map, database diagram
+
 maoG -- 2019-11-21 23:43
 - Updated README with APIs and launch instructions
 - Added all necessary API cards to the Knowledge Base

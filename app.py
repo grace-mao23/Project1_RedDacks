@@ -5,32 +5,13 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from utl.db import insert, get, setup
+from utl.auth import auth, checkAuth, register
 import urllib.request, json, sqlite3, os
 
 app = Flask(__name__)
 app.secret_key = "Dacks"
 
 setup()
-
-def auth(username, password):
-    try:
-        pword = get("users", "hashpassword",
-                           "WHERE username = '%s'" % username)[0][0]
-        if pword == password:
-            return True
-    except:
-        return False
-
-def register(username, password):
-    if not auth(username, password):
-        insert("users", ["NULL", username, password])
-    return True
-
-def checkAuth():
-    if "userID" in session:
-        return True
-    else:
-        return False
 
 @app.route("/")
 def root():

@@ -6,7 +6,7 @@ from numbers import Number
 # Flask Lib
 from flask import current_app, g
 
-DB_FILE = "database.db"
+DB_FILE = "data/database.db"
 
 def setup():
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -42,6 +42,7 @@ def header_types(tbl_name):
     heads = c.fetchall()
     c.close()
     return [str(head[1]) for head in heads]
+
 
 # Insert a row into a table given the values
 def insert(tbl_name, values):

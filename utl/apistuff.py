@@ -28,3 +28,16 @@ def newsapi(location):
 
 def newyorktimesapi(location):
     u = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM&sort=newest&fq=unitedstates&facet_filter=true"
+
+def getlocation(location):
+    if location.lower() == "united states":
+        location = "us"
+    try:
+        u = urllib.request.urlopen("https://restcountries.eu/rest/v2/name/{}?fullText=true".format(location))
+    except:
+        return "Bad value for location"
+    response = u.read()
+    data = json.loads(response)
+    return data[0]['alpha2Code']
+
+print(getlocation("united states"))

@@ -2,13 +2,17 @@ RedDacks: Nahi Khan, Grace Mao, Sophie Nichol, Jackson Zou
 P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
-
+khanN -- 2019-11-21 21:21
+- Finished the implications of login.html
+- Finished the implications of signup.html
+- Will be using foundation to clean up the two, add "pizazz"
+- Will work on homepage and other given templates as soon as possible
 maoG -- 2019-11-20 23:29
-- New revision of the design doc, with updated site map and database 
+- New revision of the design doc, with updated site map and database
 diagram
-- Check in with team: templates to be done for Friday (khanN), API 
-return values being analyzed (zouJ), database functions created + 
-waiting for zouJ to work together on API database (nicholS), cards to be 
+- Check in with team: templates to be done for Friday (khanN), API
+return values being analyzed (zouJ), database functions created +
+waiting for zouJ to work together on API database (nicholS), cards to be
 done for bit.ly/apikb1920 (maoG)
 
 zouJ -- 2019-11-20 23:09

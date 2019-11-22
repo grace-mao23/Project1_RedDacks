@@ -22,18 +22,21 @@ The RedDack Daily is a site that displays updated news tracked by location. Sear
 ## Launch Codes:
 _Step 1._ Clone the repo (ssh key needed)
 
-```$ git clone git@github.com:grace-mao23/Project1_RedDacks.git
+```
+$ git clone git@github.com:grace-mao23/Project1_RedDacks.git
 ```
 
 _Step 2._ Enter the cloned repo and install the necessary packages
 
-```$ cd Project1_RedDacks
-   $ pip install -r ./doc/requirements.txt
+```
+$ cd Project1_RedDacks
+$ pip install -r ./doc/requirements.txt
 ```
 
 _Step 3._ Run the app!
 
-```$ python app.py
+```
+$ python app.py
 ```
 
 > A note about API keys: while we have provided default API keys, if for some reason the API is failing to implement this key, you will be allowed to enter your own, in which case you will have to obtain a free key using the links about in the API section.

@@ -3,6 +3,9 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+nicholS -- 2019-11-21 23:00
+- Initialized databases for users, locations, and news in the setup function
+- Revised database connection
 
 zouJ -- 2019-11-21 22:24
 - Created method for return alpha2Code based on country name, however errors may occur for country names with spaces
@@ -18,6 +21,9 @@ khanN -- 2019-11-21 21:21
 - Finished the implications of signup.html
 - Will be using foundation to clean up the two, add "pizazz"
 - Will work on homepage and other given templates as soon as possible
+
+nicholS -- 2019-11-20 20:41
+- Revised database diagram to reflect new changes
 
 maoG -- 2019-11-20 23:29
 - New revision of the design doc, with updated site map and database

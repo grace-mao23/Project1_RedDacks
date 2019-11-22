@@ -75,7 +75,12 @@ def reg():
 
 @app.route("/home")
 def home():
-    return "you're home"
+    return render_template('home.html')
+
+@app.route("/logout")
+def logout():
+    session.pop("userID")
+    return redirect("/")
 
 if __name__ == "__main__":
     app.debug = True

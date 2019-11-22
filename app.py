@@ -4,12 +4,12 @@
 # 11/13/2019
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-
+from utl.db import insert, get, setup
 import urllib.request, json, sqlite3, os
 
 app = Flask(__name__)
 
-
+setup()
 
 def checkAuth():
     if "userID" in session:

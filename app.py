@@ -38,7 +38,9 @@ def authen():
     if auth(request.args['username'], request.args['password']):
         session["userID"] = True
         return redirect(url_for('home'))
-    return redirect(url_for('login'))
+    if get("users", "username", "WHERE username = '%s'" % request.args['username']):
+        return render_template('login.html', error=True, message='Password Incorrect')
+    return render_template('login.html', error=True, message='Username Not Found')
 
 @app.route("/register")
 def reg():

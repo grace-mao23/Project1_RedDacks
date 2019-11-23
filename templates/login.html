@@ -14,10 +14,7 @@
     <div class = "large-12 cell">
       {% if error %}
         <div class = "alert callout">
-        {% for message in get_flashed_messages() %}
         <i>{{ message }}</i>
-        <br>
-        {% endfor %}
         </div>
       {% else %}
         <div class = "primary callout">

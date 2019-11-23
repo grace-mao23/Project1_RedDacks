@@ -1,0 +1,41 @@
+{% extends "homebase.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+{% for message in get_flashed_messages() %}
+<i>{{ message }}</i>
+<br>
+{% endfor %}
+<h2>
+  <hr>
+  <center>
+    <table>
+      <tr>
+	<td>
+	  <form action="/search">
+	    <label for="query">Search for a Story</label>
+	    <input type="text" name="query" required>
+	    <input type="submit" name="search-button" value="Search">
+	  </form>
+
+	</td>
+# insertion of the random dog api stuff thingie
+	<td><pre>   |   </pre></td>
+	<td>
+	  <form action="/logout">
+	    <input type="submit" name="logout-button" value="Log Out" />
+	  </form>
+	</td>
+      </tr>
+    </table>
+  </center>
+  <hr>
+</h2>
+<br>
+<br>
+
+<h2>
+</h2>
+
+{% endblock %}

@@ -3,6 +3,13 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+maoG -- 2019-11-23 11:22
+- Fixed the capitalization of templates, will test in school computers
+- Put in the Foundation link for homebase.html
+- Added style to login page using Foundation
+- Error messages for logging in created using auth route
+- Tested ONLY username wrong right now, need to test more later on
+
 maoG -- 2019-11-22 00:16
 - Working site created
 - Signup and logout both seemingly working

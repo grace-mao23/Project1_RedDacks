@@ -4,19 +4,54 @@
 {% block body %}
 
 <div align="center">
-  <h2>Login</h2>
-  {% for message in get_flashed_messages() %}
-  <i>{{ message }}</i>
-  <br>
-  {% endfor %}
-  <form action="/auth" method="GET">
-    <label for="username">Username</label>
-    <input type="text" name="username" required>
-    <br>
-    <label for="password">Password</label>
-    <input type="password" name="password" required>
-    <br>
-    <input type="submit" name="login-button" value="Log In">
-    <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-  </form>
-  {% endblock %}
+  <div class="grid-x grid-padding-x">
+    <div class = "large-12 cell">
+      <h2>Login</h2>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class = "large-12 cell">
+      {% if error %}
+        <div class = "alert callout">
+        {% for message in get_flashed_messages() %}
+        <i>{{ message }}</i>
+        <br>
+        {% endfor %}
+        </div>
+      {% else %}
+        <div class = "primary callout">
+          Please login
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-4 cell"></div>
+    <div class="medium-4 cell">
+      <form action="/auth" method="GET">
+        <label for="username">Username</label>
+        <input type="text" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit" class="primary button" name="login-button">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-4 cell"></div>
+    <div class="medium-4 cell">
+      <div class="success callout">
+        Don't have an account? <br> <br>
+        <a href="/signup" class="button success">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

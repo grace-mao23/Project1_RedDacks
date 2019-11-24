@@ -34,6 +34,17 @@ def setup():
                 FOREIGN KEY (countryID) REFERENCES countries (countryID)
                 );""")
                 #should I change timeanddate to timesstamp? ^
+    c.execute("""CREATE TABLE IF NOT EXISTS NYTimes(
+                nytID INTEGER PRIMARY KEY AUTOINCREMENT,
+                countryID INTEGER,
+				title TEXT NOT NULL,
+				author TEXT NOT NULL,
+                description TEXT,
+				url TEXT NOT NULL,
+				imageURL TEXT NOT NULL,
+                timepulled TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (countryID) REFERENCES countries (countryID)
+                );""")
     c.close()
 
 # Return the column types of a table

@@ -57,7 +57,15 @@ def reg():
 
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    url = "https://random.dog/woof.json"
+    response = urllib.request.urlopen(url)
+    response = response.read()
+    data = json.loads(response)
+    while (data['url'][-1] == '4'):
+        response = urllib.request.urlopen(url)
+        response = response.read()
+        data = json.loads(response)
+    return render_template('home.html', dog=data['url'])
 
 @app.route("/logout")
 def logout():

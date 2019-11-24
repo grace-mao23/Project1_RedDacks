@@ -3,39 +3,35 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-{% for message in get_flashed_messages() %}
-<i>{{ message }}</i>
-<br>
-{% endfor %}
-<h2>
-  <hr>
-  <center>
-    <table>
-      <tr>
-	<td>
-	  <form action="/search">
-	    <label for="query">Search for a Story</label>
-	    <input type="text" name="query" required>
-	    <input type="submit" name="search-button" value="Search">
-	  </form>
 
-	</td>
-# insertion of the random dog api stuff thingie
-	<td><pre>   |   </pre></td>
-	<td>
-	  <form action="/logout">
-	    <input type="submit" name="logout-button" value="Log Out" />
-	  </form>
-	</td>
-      </tr>
-    </table>
-  </center>
-  <hr>
-</h2>
-<br>
-<br>
+<div align="center">
+  <div class="grid-x grid-padding-x">
+    <div class = "large-12 cell">
+      <h2>Welcome!</h2>
+      <form action="/settings">
+        <button type="submit" class="warning button" name="settings-button">Account Settings</button>
+      </form>
+    </div>
+  </div>
 
-<h2>
-</h2>
+  <div class="grid-x grid-padding-x">
+    <div class="medium-6 cell">
+      <div class="medium-2 cell"></div>
+        <form action="/search">
+    	    <label for="query"><h5>Search A Location</h5></label>
+    	    <input type="text" name="query" required>
+    	    <button type="submit" class="primary button" name="search-button">Search</button>
+    	  </form>
+
+    </div>
+    <div class="medium-6 cell">
+      <form action="/logout">
+        <button type="submit" class="alert button" name="logout-button">Log Out</button>
+  	  </form>
+      <img src="{{ dog }}" width=300px height=300px>
+
+    </div>
+  </div>
+</div>
 
 {% endblock %}

@@ -23,15 +23,17 @@ def setup():
             	name TEXT NOT NULL
             	);""")
     c.execute("""CREATE TABLE IF NOT EXISTS news(
-                countryID integer
+                articleID INTEGER PRIMARY KEY AUTOINCREMENT,
+                countryID INTEGER,
 				title TEXT NOT NULL,
 				author TEXT NOT NULL,
+                description TEXT,
 				url TEXT NOT NULL,
 				imageURL TEXT NOT NULL,
-				content TEXT NOT NULL,
-                dateandtime TEXT NOT NULL,
+                dateandtime TEXT,
                 FOREIGN KEY (countryID) REFERENCES countries (countryID)
                 );""")
+                #should I change timeanddate to timesstamp? ^
     c.close()
 
 # Return the column types of a table

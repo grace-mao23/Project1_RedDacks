@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 import urllib.request, json
+from utl.db import insert, get
 
+# should take in the countryID
 def newsapi(location):
     u = urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country={}&apiKey=6b19e4b53ded4360bec67947b47a27de".format(location))
     response = u.read()
@@ -24,6 +26,9 @@ def newsapi(location):
         temp.append(l["url"])
         temp.append(l["urlToImage"])
         final.append(temp)
+        # add results to database
+        insert("news", ["NULL", location, l["title"], l["author"], l["description"], l["url"], l["urlToImage"], "NULL"])
+
     return final
 
 def newyorktimesapi(location):
@@ -38,4 +43,6 @@ def getlocation(location):
         return "Bad value for location"
     response = u.read()
     data = json.loads(response)
+    # add to database
+    insert("countries", ["NULL", data[0]['alpha2Code'], location])
     return data[0]['alpha2Code']

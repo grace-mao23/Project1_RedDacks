@@ -1,6 +1,6 @@
 # Standard Lib
 from flask import session
-from utl.db import insert, get, setup
+from utl.db import insert, get
 
 def auth(username, password):
     try:

@@ -44,14 +44,13 @@ def authen():
 
 @app.route("/register")
 def reg():
-    if (request.args['username'] == ""):
-        return redirect("/")
-    if (request.args['password'] == ""):
-        return redirect("/")
+    #print(request.args['username'])
+    #print(get("users", "username", "WHERE username = '%s'" % request.args['username'])[0][0])
+    #print(request.args['username']==get("users", "username", "WHERE username = '%s'" % request.args['username'])[0][0])
     if (request.args['password'] != request.args['password2']):
-        return redirect("/")
-    if (get("users", "username", "WHERE username = '%s'" % request.args['username'])):
-        return redirect("/")
+        return render_template('signup.html', error=True, message="Passwords Don't Match")
+    if (request.args['username'] == get("users", "username", "WHERE username = '%s'" % request.args['username'])[0][0]):
+        return render_template('signup.html', error=True, message="Username Already Taken")
     if register(request.args['username'], request.args['password']):
         session["userID"] = True
         return redirect(url_for("home"))

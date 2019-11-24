@@ -3,22 +3,52 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block body %}
-<h2>Sign Up</h2>
-{% for message in get_flashed_messages() %}
-<i>{{ message }}</i>
-<br>
-{% endfor %}
-<form action="/register" method="GET">
-  <label for="username">Username</label>
-  <input type="text" name="username" required>
-  <br>
-  <label for="password">Password</label>
-  <input type="password" name="password" required>
-  <br>
-  <label for="password2">Confirm Password</label>
-  <input type="password" name="password2" required>
-  <br>
-  <input type="submit" name="register-button" value="Sign Up">
-  <p>Already have an account? <a href="/login">Log In</a></p>
-</form>
+
+<div align="center">
+  <div class="grid-x grid-padding-x">
+    <div class = "large-12 cell">
+      <h2>Sign Up</h2>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class = "large-12 cell">
+      {% if error %}
+        <div class = "alert callout">
+        <i>{{ message }}</i>
+        </div>
+      {% else %}
+        <div class = "primary callout">
+          Enter a username and password to create your account
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-4 cell"></div>
+    <div class="medium-4 cell">
+      <form action="/register" method="GET">
+        <label for="username">Username</label>
+        <input type="text" name="username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+        <label for="password2">Confirm Password</label>
+        <input type="password" name="password2" required>
+        <button type="submit" class="primary button" name="register-button">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-4 cell"></div>
+    <div class="medium-4 cell">
+      <div class="warning callout">
+        Already have an account? <br> <br>
+        Click on the title logo above to return to the login page.
+      </div>
+    </div>
+  </div>
+
+</div>
 {% endblock %}

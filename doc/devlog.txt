@@ -3,7 +3,14 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
-NicholS -- 2019-11-24 17:36
+maoG -- 2019-11-24 18:41
+- Added Foundation to home page
+- Incorporated dog API into the homepage as well as account settings 
+button
+- Comitted an updated database with username grace and password mao for 
+testing purposes
+
+nicholS -- 2019-11-24 17:36
 - Added insert function calls in the function to pull information from the
 information pulled will be added to their databases
 - Edited row inputs for news and country API and added preliminary NYT table

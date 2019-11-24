@@ -3,6 +3,13 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+maoG -- 2019-11-23 22:41
+- Created logo for the website as a clickable button that will lead to 
+login or homepage depending on session status
+- Added Foundation for Signup page
+- Error messages for signup created using register route
+- Tested fully
+
 maoG -- 2019-11-23 11:22
 - Fixed the capitalization of templates, will test in school computers
 - Put in the Foundation link for homebase.html

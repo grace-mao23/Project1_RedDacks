@@ -3,6 +3,9 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+zouJ -- 2019-11-25 10:51
+- Created get method for New York Times api based on category
+
 zouJ -- 2019-11-24 22:57
 - Created db for keys so users can update later
 - Figured out calendyapi cannot be used in this, needs paid subscription

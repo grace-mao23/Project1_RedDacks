@@ -32,8 +32,21 @@ def newsapi(location):
 
     return final
 
-def newyorktimesapi(location):
-    u = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM&sort=newest&fq=unitedstates&facet_filter=true"
+def newyorktimesapi(category):
+    u = urllib.request.urlopen("https://api.nytimes.com/svc/topstories/v2/{}.json?api-key=EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM".format(category))
+    response = u.read()
+    data = json.loads(response)
+    results = data["results"]
+    final = []
+    for l in results:
+        temp = []
+        temp.append(l["title"])
+        temp.append(l["byline"])
+        temp.append(l["abstract"])
+        temp.append(l["url"])
+        temp.append(l["multimedia"][0]["url"])
+        final.append(temp)
+    return final
 
 # def calenderapi(location):
 #     u = urllib.request.urlopen("https://calendarific.com/api/v2/holidays?api_key=afae9c6e72a9f688537453a3fafc6ce35b12e0ad&country=US&year=2019&type=national")
@@ -62,3 +75,5 @@ def getlocation(location):
     # add to database
     insert("countries", ["NULL", data[0]['alpha2Code'], location])
     return data[0]['alpha2Code']
+
+print(newyorktimesapi("science"))

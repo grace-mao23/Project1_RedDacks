@@ -3,6 +3,20 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+maoG -- 2019-11-25 14:33
+- HOME STRETCH PLAN
+0. Finish Setup, adding Countries API to the database --> Sophie, due Friday
+1. Add Foundation and Jinja/HTML to the rest of the templates --> Nahi, due Friday
+2. Call the API from app.py, specifically in the search engine --> Jackson, due Monday
+3. Account Settings page and functionality --> Grace, due Friday
+4. Recent searches, tested using the Countries API --> Sophie, due Monday
+5. Display articles (part of step 1) --> Nahi, due Friday/Sunday (testing)
+6. Search engine functionality ***** final steps --> Jackson and Sophie, due Wednesday, December 4
+- Note: for now, we would like to make sure that none of these features are cut
+- If finished ahead of schedule:
+7. Sort by topics
+8. Search by state in the United States
+
 zouJ -- 2019-11-25 10:51
 - Created get method for New York Times api based on category
 

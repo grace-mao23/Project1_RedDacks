@@ -48,6 +48,11 @@ def newyorktimesapi(category):
         final.append(temp)
     return final
 
+def guardianapi(category):
+    u = urllib.request.urlopen("https://content.guardianapis.com/environment?api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de")
+    response = u.read()
+    data = json.loads(response)
+
 # def calenderapi(location):
 #     u = urllib.request.urlopen("https://calendarific.com/api/v2/holidays?api_key=afae9c6e72a9f688537453a3fafc6ce35b12e0ad&country=US&year=2019&type=national")
 #     response = u.read()
@@ -62,6 +67,7 @@ def newyorktimesapi(category):
 #     #     temp.append(i["date"]["iso"])
 #     #     final.append(temp)
 #     # return final
+
 
 def getlocation(location):
     if location.lower() == "united states":

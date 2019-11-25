@@ -49,7 +49,7 @@ def reg():
     #print(request.args['username']==get("users", "username", "WHERE username = '%s'" % request.args['username'])[0][0])
     if (request.args['password'] != request.args['password2']):
         return render_template('signup.html', error=True, message="Passwords Don't Match")
-    if (request.args['username'] == get("users", "username", "WHERE username = '%s'" % request.args['username'])[0][0]):
+    if (request.args['username'] == get("users", "username", "WHERE username = '%s'" % request.args['username'])):
         return render_template('signup.html', error=True, message="Username Already Taken")
     if register(request.args['username'], request.args['password']):
         session["userID"] = True

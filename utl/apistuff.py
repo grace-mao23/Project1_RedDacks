@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import urllib.request, json
-from utl.db import insert, get
+#from utl.db import insert, get
+from db import insert, get
 
 # should take in the countryID
 def newsapi(location):
@@ -33,6 +34,21 @@ def newsapi(location):
 
 def newyorktimesapi(location):
     u = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM&sort=newest&fq=unitedstates&facet_filter=true"
+
+# def calenderapi(location):
+#     u = urllib.request.urlopen("https://calendarific.com/api/v2/holidays?api_key=afae9c6e72a9f688537453a3fafc6ce35b12e0ad&country=US&year=2019&type=national")
+#     response = u.read()
+#     data = json.loads(response)
+#     print(data)
+#     # data = data["response"]["holidays"]
+#     # final = []
+#     # for i in range(0, 5):
+#     #     temp = []
+#     #     temp.append(i["name"])
+#     #     temp.append(i["description"])
+#     #     temp.append(i["date"]["iso"])
+#     #     final.append(temp)
+#     # return final
 
 def getlocation(location):
     if location.lower() == "united states":

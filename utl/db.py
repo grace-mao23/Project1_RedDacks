@@ -45,6 +45,13 @@ def setup():
                 timepulled TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (countryID) REFERENCES countries (countryID)
                 );""")
+    c.execute("""CREATE TABLE IF NOT EXISTS Keys(
+                name TEXT NOT NULL,
+                apikey TEXT NOT NULL
+                );""")
+    c.execute("""INSERT INTO Keys VALUES(
+                \"newyorktimes\", \"EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM\"
+                );""")
     c.close()
 
 # Return the column types of a table

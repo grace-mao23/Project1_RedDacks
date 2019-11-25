@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import urllib.request, json
 #from utl.db import insert, get
-from db import insert, get
+from utl.db import insert, get
 
 # should take in the countryID
 def newsapi(location):
@@ -68,18 +68,30 @@ def guardianapi(category):
 #     #     final.append(temp)
 #     # return final
 
-
-def getlocation(location):
-    if location.lower() == "united states":
-        location = "us"
-    try:
-        u = urllib.request.urlopen("https://restcountries.eu/rest/v2/name/{}?fullText=true".format(location))
-    except:
-        return "Bad value for location"
+def pullcountries():
+    u = urllib.request.urlopen("https://restcountries.eu/rest/v2/all")
     response = u.read()
     data = json.loads(response)
-    # add to database
-    insert("countries", ["NULL", data[0]['alpha2Code'], location])
-    return data[0]['alpha2Code']
+    final = []
+    for country in data:
+        temp = []
+        temp.append(country["name"])
+        temp.append(country["alpha2Code"])
+        final.append(temp)
+        insert("countries", ["NULL", country['alpha2Code'], country["name"]])
+    return final
 
-print(newyorktimesapi("science"))
+# def getlocation(location):
+#     if location.lower() == "united states":
+#         location = "us"
+#     try:
+#         u = urllib.request.urlopen("https://restcountries.eu/rest/v2/name/{}?fullText=true".format(location))
+#     except:
+#         return "Bad value for location"
+#     response = u.read()
+#     data = json.loads(response)
+#     # add to database
+#     insert("countries", ["NULL", data[0]['alpha2Code'], location])
+#     return data[0]['alpha2Code']
+
+print(pullcountries())

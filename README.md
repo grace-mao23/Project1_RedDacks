@@ -3,7 +3,7 @@
 Created by Team RedDacks, pd9
 
 ## Our Team:
-* Nahi Khan - Leader of the House of the Dack Lords
+* Nahi Khan - Dack
 * Grace Mao - Prime Minister of Dackland
 * Sophie Nichol - Chancellor of the Dacks
 * Jackson Zou - The Butler

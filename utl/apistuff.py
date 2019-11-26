@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import urllib.request, json
-from utl.db import insert, get
+from utl.db import get, insertCountry, insert
 
 # should take in the countryID
 def newsapi(location):
@@ -27,7 +27,7 @@ def newsapi(location):
         temp.append(l["urlToImage"])
         final.append(temp)
         # add results to database
-        insert("news", ["NULL", location, l["title"], l["author"], l["description"], l["url"], l["urlToImage"], "NULL"])
+        #insert("news", ["NULL", location, l["title"], l["author"], l["description"], l["url"], l["urlToImage"], "NULL"])
 
     return final
 
@@ -74,7 +74,7 @@ def pullcountries():
     final = {}
     for country in data:
         final[country["name"].lower()] = country["alpha2Code"]
-        insert("countries", [country['alpha2Code'], country["name"]])
+        insertCountry(country['alpha2Code'], country["name"])
     return final
 
 # def getlocation(location):

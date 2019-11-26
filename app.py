@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.secret_key = "Dacks"
 
 setup()
+pullcountries()
 
 @app.route("/")
 def root():

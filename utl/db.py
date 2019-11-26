@@ -18,6 +18,7 @@ def setup():
                 hashpassword TEXT NOT NULL,
                 displayname TEXT NOT NULL
                 );""")
+    c.execute("""DROP TABLE IF EXISTS countries;""")
     c.execute("""CREATE TABLE IF NOT EXISTS countries(
             	countryID INTEGER PRIMARY KEY AUTOINCREMENT,
             	code TEXT NOT NULL,

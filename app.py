@@ -12,11 +12,10 @@ import urllib.request, json, sqlite3, os
 app = Flask(__name__)
 app.secret_key = "Dacks"
 
-setup()
-pullcountries()
-
 @app.route("/")
 def root():
+    setup()
+    pullcountries()
     if checkAuth(): #if you've already logged in
         return redirect(url_for('home'))
     else: #if not, redirect to login page
@@ -76,9 +75,12 @@ def logout():
 
 @app.route("/search")
 def search():
+    #blah = get("countries", "code", "WHERE name == '%s'" % request.args['query'])[0][0]
+    #print(blah)
+    #return "poo"
     countries = pullcountries()
-    articles = newsapi(countries[request.args['query']])
     print(countries)
+    articles = newsapi(countries[request.args['query']])
     return render_template('searchedtopics.html', articles = articles)
 
 if __name__ == "__main__":

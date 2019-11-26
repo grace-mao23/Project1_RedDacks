@@ -88,8 +88,9 @@ def insertCountry(ccode, cname):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
     c.execute("INSERT into countries (code, name) VALUES(?, ?);", (ccode, cname))
+    #c.execute("INSERT into countries VALUES(NULL, ?, ?);", (ccode, cname))
+    db.commit()
     c.close()
-    return True
 
 def get(tbl_name, column, conditional=""):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create

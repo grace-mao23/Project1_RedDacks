@@ -5,6 +5,7 @@ from re import search
 from numbers import Number
 # Flask Lib
 from flask import current_app, g
+#from utl.apistuff import pullcountries
 
 DB_FILE = "data/database.db"
 
@@ -50,6 +51,7 @@ def setup():
                 apikey TEXT NOT NULL
                 );""")
     c.close()
+    #pullcountries
 
 # Return the column types of a table
 def header_types(tbl_name):

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 import urllib.request, json
-#from utl.db import insert, get
 from utl.db import insert, get
 
 # should take in the countryID
@@ -90,5 +89,3 @@ def pullcountries():
 #     # add to database
 #     insert("countries", ["NULL", data[0]['alpha2Code'], location])
 #     return data[0]['alpha2Code']
-
-print(pullcountries())

@@ -3,6 +3,11 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-1?-??
 
+zouJ -- 2019-11-25 22:24
+- Able to see articles from news api when searching up country, however the country name has to match exactly or else it breaks, might
+  change it to a dropdown menu for that
+- Changed countryapi getter method to return a dictionary of key country and value country code
+
 maoG -- 2019-11-25 14:33
 - HOME STRETCH PLAN
 0. Finish Setup, adding Countries API to the database --> Sophie, due Friday

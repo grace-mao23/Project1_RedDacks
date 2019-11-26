@@ -1,1 +1,14 @@
-#Cached topics on what recently searched page i believe
+{% extends "homebase.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+{% for article in articles %}
+  {{article[0]}}
+  <br>
+
+{% endfor %}
+
+
+{% endblock %}

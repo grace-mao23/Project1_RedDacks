@@ -49,9 +49,6 @@ def setup():
                 name TEXT NOT NULL,
                 apikey TEXT NOT NULL
                 );""")
-    c.execute("""INSERT INTO Keys VALUES(
-                \"newyorktimes\", \"EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM\"
-                );""")
     c.close()
 
 # Return the column types of a table

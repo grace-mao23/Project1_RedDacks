@@ -72,13 +72,10 @@ def pullcountries():
     u = urllib.request.urlopen("https://restcountries.eu/rest/v2/all")
     response = u.read()
     data = json.loads(response)
-    final = []
+    final = {}
     for country in data:
-        temp = []
-        temp.append(country["name"])
-        temp.append(country["alpha2Code"])
-        final.append(temp)
-        insert("countries", ["NULL", country['alpha2Code'], country["name"]])
+        final[country["name"].lower()] = country["alpha2Code"]
+        insert("countries", [country['alpha2Code'], country["name"]])
     return final
 
 # def getlocation(location):

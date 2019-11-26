@@ -6,6 +6,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from utl.db import insert, get, setup
 from utl.auth import auth, checkAuth, register
+from utl.apistuff import newsapi, pullcountries
 import urllib.request, json, sqlite3, os
 
 app = Flask(__name__)
@@ -71,6 +72,13 @@ def home():
 def logout():
     session.pop("userID")
     return redirect("/")
+
+@app.route("/search")
+def search():
+    countries = pullcountries()
+    articles = newsapi(countries[request.args['query']])
+    print(countries)
+    return render_template('searchedtopics.html', articles = articles)
 
 if __name__ == "__main__":
     app.debug = True

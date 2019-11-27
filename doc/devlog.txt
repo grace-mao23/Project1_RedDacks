@@ -7,6 +7,7 @@ maoG -- 2019-11-26 22:07
 - DESIGN DOC V4
 - Corrected component map and database diagram to reflect scrapping the 
 holiday API (requires money that we don't have)
+- Updated README to reflect these design doc changes
 
 zouJ -- 2019-11-25 22:24
 - Able to see articles from news api when searching up country, however the country name has to match exactly or else it breaks, might

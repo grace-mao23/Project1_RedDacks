@@ -1,7 +1,12 @@
 RedDacks: Nahi Khan, Grace Mao, Sophie Nichol, Jackson Zou
 P#01 - ArRESTed Development
 SoftDev1 Pd9
-2019-1?-??
+2019-12-04
+
+maoG -- 2019-11-26 22:07
+- DESIGN DOC V4
+- Corrected component map and database diagram to reflect scrapping the 
+holiday API (requires money that we don't have)
 
 zouJ -- 2019-11-25 22:24
 - Able to see articles from news api when searching up country, however the country name has to match exactly or else it breaks, might
@@ -67,6 +72,7 @@ database... FIX ASAP
 - methods like authenticate logout and register written somewhat
 
 maoG -- 2019-11-21 23:56
+- DESIGN DOC V3
 - New revision of design doc !!!!!
 - Countries API readded to component map, database diagram
 
@@ -97,6 +103,7 @@ nicholS -- 2019-11-20 20:41
 - Revised database diagram to reflect new changes
 
 maoG -- 2019-11-20 23:29
+- DESIGN DOC V2
 - New revision of the design doc, with updated site map and database
 diagram
 - Check in with team: templates to be done for Friday (khanN), API
@@ -146,6 +153,7 @@ nicholS -- 2019-11-19 18:58
 - Made functions to to get info from the database and insert a new row into the database
 
 maoG -- 2019-11-18 16:28
+- DESIGN DOC V1
 - Revised design doc, making corrections to the site map connections and component map connections
 - Deleted API keys from design doc (oops)
 
@@ -153,4 +161,5 @@ zouJ -- 2019-11-18 14:49
 - Removed API keys from the design doc
 
 maoG -- 2019-11-18 00:05
+- DESIGN DOC V0
 - Uploading first version of the design doc

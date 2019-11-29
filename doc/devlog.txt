@@ -3,6 +3,12 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
 
+maoG -- 2019-11-28 21:37
+- Created account settings template, deleted calendar template
+- Wrote update_user function to update username/password for account 
+settings
+- Username updatable, password yet to be implemented
+
 maoG -- 2019-11-26 22:07
 - DESIGN DOC V4
 - Corrected component map and database diagram to reflect scrapping the 

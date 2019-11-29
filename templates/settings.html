@@ -1,0 +1,60 @@
+{% extends "homebase.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<div align="center">
+  <div class="grid-x grid-padding-x">
+    <div class = "large-12 cell">
+      <h2>My Settings</h2>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-3 cell"></div>
+    <div class = "medium-6 cell">
+      <form action="/change_username">
+        {% if error1 %}
+          <div class = "alert callout">
+          <i>{{ message }}</i>
+          </div>
+        {% endif %}
+        {% if changed1 %}
+          <div class="success callout"?
+          <i>Username Changed!</i>
+          </div>
+        {% endif %}
+        <h4> Change Your Username </h4>
+        New Username: <input type="text" name="newusername">
+        <button type="submit" class="success button" name="change_username">Submit</button>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="medium-3 cell"></div>
+    <div class = "medium-6 cell">
+      <form action="/change_settings">
+        {% if error2 %}
+          <div class = "alert callout">
+          <i>{{ message }}</i>
+          </div>
+        {% endif %}
+        {% if changed2 %}
+          <div class="success callout"?
+          <i>Password Changed!</i>
+          </div>
+        {% endif %}
+        <h4> Change Your Password </h4>
+        Current Password: <input type="password" name="check_password">
+        <br>
+        New Password: <input type="password" name="new_password">
+        <br>
+        Confirm New Password: <input type="password" name="confirm_password">
+        <br>
+        <button type="submit" class="success button" name="change_password">Submit</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

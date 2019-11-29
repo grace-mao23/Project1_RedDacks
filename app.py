@@ -4,7 +4,7 @@
 # 2019-11-21
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from utl.db import insert, get, setup
+from utl.db import insert, get, setup, update_user
 from utl.auth import auth, checkAuth, register
 from utl.apistuff import newsapi, pullcountries
 import urllib.request, json, sqlite3, os
@@ -12,10 +12,11 @@ import urllib.request, json, sqlite3, os
 app = Flask(__name__)
 app.secret_key = "Dacks"
 
+setup()
+pullcountries()
+
 @app.route("/")
 def root():
-    setup()
-    pullcountries()
     if checkAuth(): #if you've already logged in
         return redirect(url_for('home'))
     else: #if not, redirect to login page
@@ -38,6 +39,7 @@ def signup():
 def authen():
     if auth(request.args['username'], request.args['password']):
         session["userID"] = True
+        session["currentID"] = request.args['username']
         return redirect(url_for('home'))
     if get("users", "username", "WHERE username = '%s'" % request.args['username']):
         return render_template('login.html', error=True, message='Password Incorrect')
@@ -67,6 +69,20 @@ def home():
         response = response.read()
         data = json.loads(response)
     return render_template('home.html', dog=data['url'])
+
+@app.route("/settings")
+def settings():
+    return render_template('settings.html');
+
+@app.route("/change_username")
+def changing_u():
+    if (request.args['newusername'] == ''):
+        return render_template('settings.html', error1=True, message="No Username Entered")
+    if (request.args['newusername'] == get("users", "username", "WHERE username = '%s'" % request.args['newusername'])):
+        return render_template('settings.html', error1=True, message="Username Already Taken")
+    update_user(session['currentID'], "username", request.args['newusername'])
+    return render_template('settings.html', changed1=True)
+
 
 @app.route("/logout")
 def logout():

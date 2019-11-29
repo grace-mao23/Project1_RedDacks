@@ -100,3 +100,16 @@ def get(tbl_name, column, conditional=""):
     values = c.fetchall()
     c.close()
     return [list(value) for value in values]
+
+def update_user(username, field, newvalue):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("UPDATE users SET %s = '%s' WHERE username = '%s'" % (
+                field,
+                newvalue,
+                username
+            )
+        )
+    db.commit()
+    c.close()
+    return "Success"

@@ -1,12 +1,26 @@
 {% extends "homebase.html" %}
-
-{% block title %}Home{% endblock %}
+{% block title %}SearchedTopics{% endblock %}
 
 {% block body %}
 
-{% for article in articles %}
-  {{article[0]}}
-  <br>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/js/foundation.min.js"></script>
+</head>
+
+<body>
+  <h2>Search Results<h2>
+      <div class="large-12 cell">
+        <div class="callout" name="Search Results">
+          {% for article in articles %}
+            {{article[0]}}
+    </div>
+  </div>
+
+
+
+
+
 
 {% endfor %}
 

@@ -3,15 +3,24 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
 
+khanN -- 2019-11-29 16:58
+- Used foundation to fix up searchedtopics.HTML
+- Created a box where all results from search would show on the searchedtopcis page
+- Need to know how to fetch hyperlinks to news grabbed from the API
+- Will be creating loading button thing for home page soon when a country is searched
+- Need to fix search bar when it fetches data from the db, it is currently character specific and very exclusive
+  (Need to make it inclusive, perhaps even by character)
+- Need to implement 9 character pwd, numbers, special character, letter, and capitalization requirements for pwd input
+
 maoG -- 2019-11-28 21:37
 - Created account settings template, deleted calendar template
-- Wrote update_user function to update username/password for account 
+- Wrote update_user function to update username/password for account
 settings
 - Username updatable, password yet to be implemented
 
 maoG -- 2019-11-26 22:07
 - DESIGN DOC V4
-- Corrected component map and database diagram to reflect scrapping the 
+- Corrected component map and database diagram to reflect scrapping the
 holiday API (requires money that we don't have)
 - Updated README to reflect these design doc changes
 

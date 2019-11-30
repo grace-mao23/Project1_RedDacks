@@ -74,14 +74,30 @@ def home():
 def settings():
     return render_template('settings.html');
 
-@app.route("/change_username")
-def changing_u():
-    if (request.args['newusername'] == ''):
-        return render_template('settings.html', error1=True, message="No Username Entered")
-    if (request.args['newusername'] == get("users", "username", "WHERE username = '%s'" % request.args['newusername'])):
-        return render_template('settings.html', error1=True, message="Username Already Taken")
-    update_user(session['currentID'], "username", request.args['newusername'])
-    return render_template('settings.html', changed1=True)
+@app.route("/change_settings")
+def changing():
+    # no password stuff entered --> change Username
+    if (request.args['check_password'] == ''):
+        if (request.args['new_password'] != '' or request.args['confirm_password'] != ''):
+            return render_template('settings.html', error2=True, message="Necessary Fields Not Filled Out")
+        # change Username
+        if (request.args['newusername'] == ''):
+            return render_template('settings.html', error1=True, message="Necessary Fields Not Filled Out")
+        if (request.args['newusername'] == get("users", "username", "WHERE username = '%s'" % request.args['newusername'])[0][0]):
+            return render_template('settings.html', error1=True, message="Username Already Taken")
+        update_user(session['currentID'], "username", request.args['newusername'])
+        return render_template('settings.html', changed1=True)
+    else: # password being changed
+        if (request.args['new_password'] == '' or request.args['confirm_password'] == ''):
+            return render_template('settings.html', error2=True, message="Necessary Fields Not Filled Out")
+        #print("-----------------")
+        #print(get("users","hashpassword","WHERE username='%s'" % session['currentID']))
+        if (request.args['check_password'] != get("users", "hashpassword", "WHERE username = '%s'" % session['currentID'])[0][0]):
+            return render_template('settings.html', error2=True, message="Incorrect Password")
+        if (request.args['new_password'] != request.args['confirm_password']):
+            return render_template('settings.html', error2=True, message="Passwords Don't Match")
+        update_user(session['currentID'], "hashpassword", request.args['new_password'])
+        return render_template('settings.html', changed2=True)
 
 
 @app.route("/logout")

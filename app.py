@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.secret_key = "Dacks"
 
 setup()
-pullcountries()
+countries = pullcountries()
 
 @app.route("/")
 def root():
@@ -110,10 +110,13 @@ def search():
     #blah = get("countries", "code", "WHERE name == '%s'" % request.args['query'])[0][0]
     #print(blah)
     #return "poo"
-    countries = pullcountries()
-    print(countries)
-    articles = newsapi(countries[request.args['query']])
-    return render_template('searchedtopics.html', articles = articles)
+    session['country'] = countries[request.args['query']]
+    return render_template('searchedcountry.html')
+
+@app.route("/search/<category>")
+def fullsearch(category):
+    articles = newsapi(session['country'], category)
+    return render_template('results.html', articles = articles)
 
 if __name__ == "__main__":
     app.debug = True

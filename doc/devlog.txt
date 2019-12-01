@@ -3,9 +3,13 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
 
+zouJ -- 2019-12-01 00:18
+- Added in page for selecting category after choosing country
+- Added in page after to show article title
+
 maoG -- 2019-11-29 22:40
 - Finished Account Settings by implementing changing the password
-- Note: should test on Linux machines whether get() returns double list 
+- Note: should test on Linux machines whether get() returns double list
 or just a list
 - Checking in tomorrow with group
 

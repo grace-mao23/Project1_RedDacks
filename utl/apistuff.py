@@ -3,8 +3,9 @@ import urllib.request, json
 from utl.db import get, insertCountry, insert
 
 # should take in the countryID
-def newsapi(location):
-    u = urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country={}&apiKey=6b19e4b53ded4360bec67947b47a27de".format(location))
+def newsapi(location, category):
+    u = urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country={}&category={}&apiKey=6b19e4b53ded4360bec67947b47a27de".format(location, category))
+    #u = urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country=us&category=businesss&apiKey=6b19e4b53ded4360bec67947b47a27de"
     response = u.read()
     data = json.loads(response)
     articles = data["articles"]
@@ -16,7 +17,7 @@ def newsapi(location):
     else:
         numarticles = data["totalResults"]
 
-    final.append(numarticles)
+    #final.append(numarticles)
     for i in range(0,numarticles):
         l = articles[i]
         temp = []

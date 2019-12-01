@@ -2,3 +2,8 @@
 {% block title %}Results{% endblock %}
 
 {% block body %}
+{% for article in articles %}
+  <br>
+  {{article[0]}}
+{% endfor %}
+{% endblock %}

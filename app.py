@@ -118,7 +118,7 @@ def search():
 def fullsearch(category):
     articles = newsapi(session['countrycode'], category)
     newarticles = newyorktimesapi(session['country'], category)
-    print(newarticles)
+    #print(newarticles)
     return render_template('results.html', category = category, country = session['country'].capitalize(), articles = articles, newarticles = newarticles)
 
 if __name__ == "__main__":

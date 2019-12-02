@@ -4,6 +4,21 @@
 {% block body %}
 {% for article in articles %}
   <br>
-  {{article[0]}}
+  <h3> Title: {{article[0]}} </h3>
+  <br>
+  Author: {{article[1]}}
+  <br>
+  Description: {{article[2]}}
+  <br>
+  <a href="{{article[3]}}">Click here to go to article</a>
+  <br>
+  <img src="{{article[4]}}" alt="">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
 {% endfor %}
 {% endblock %}

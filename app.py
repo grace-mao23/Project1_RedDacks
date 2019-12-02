@@ -110,7 +110,7 @@ def search():
     #blah = get("countries", "code", "WHERE name == '%s'" % request.args['query'])[0][0]
     #print(blah)
     #return "poo"
-    session['country'] = countries[request.args['query']]
+    session['country'] = countries[request.args['query'].lower()]
     return render_template('searchedcountry.html')
 
 @app.route("/search/<category>")

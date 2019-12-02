@@ -3,6 +3,18 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
 
+maoG -- 2019-12-01 22:23
+- Tiny tweak for search so that it will recognize uppercased countries
+- PM CHECKLIST AFTER BREAK
+- search returns key error when the key is not in the dictionary
+  - major issue: how to search multi-word countries
+- loading takes a little too long, remember to add timestamp to the 
+database
+- add more instructions to the site (?) aka doesn't have to be as 
+intuitive
+- **overall goal: IMPROVE SEARCH ENGINE (original due date was Wednesday 
+so we good)
+
 zouJ -- 2019-12-01 00:18
 - Added in page for selecting category after choosing country
 - Added in page after to show article title

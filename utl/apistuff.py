@@ -32,20 +32,48 @@ def newsapi(location, category):
 
     return final
 
-def newyorktimesapi(category):
+def newyorktimesapi(country, category):
+    #business = business
+    #science = science
+    #entertainment = fashion / magazine
+    #general = sundayreview
+    #health = health
+    #sports = sports
+    #technology = technology
+    if category.lower() == "general":
+        category = "sundayreview"
+    if category.lower() == "entertainment":
+        category = "fashion"
     u = urllib.request.urlopen("https://api.nytimes.com/svc/topstories/v2/{}.json?api-key=EXwPWJTDhL7IfXGSRFvCDNMHYclouOYM".format(category))
     response = u.read()
     data = json.loads(response)
     results = data["results"]
     final = []
     for l in results:
-        temp = []
-        temp.append(l["title"])
-        temp.append(l["byline"])
-        temp.append(l["abstract"])
-        temp.append(l["url"])
-        temp.append(l["multimedia"][0]["url"])
-        final.append(temp)
+        countries = l["geo_facet"]
+        for place in countries:
+            if place.lower() == country:
+                temp = []
+                temp.append(l["title"])
+                temp.append(l["byline"])
+                temp.append(l["abstract"])
+                temp.append(l["url"])
+                if len(l["multimedia"]) > 0:
+                    temp.append(l["multimedia"][0]["url"])
+                else:
+                    temp.append("None")
+                final.append(temp)
+        if len(countries) == 0:
+            temp = []
+            temp.append(l["title"])
+            temp.append(l["byline"])
+            temp.append(l["abstract"])
+            temp.append(l["url"])
+            if len(l["multimedia"]) > 0:
+                temp.append(l["multimedia"][0]["url"])
+            else:
+                temp.append("None")
+            final.append(temp)
     return final
 
 def guardianapi(category):

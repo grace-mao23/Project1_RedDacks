@@ -6,7 +6,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from utl.db import insert, get, setup, update_user
 from utl.auth import auth, checkAuth, register
-from utl.apistuff import newsapi, pullcountries
+from utl.apistuff import newsapi, pullcountries, newyorktimesapi
 import urllib.request, json, sqlite3, os
 
 app = Flask(__name__)
@@ -110,13 +110,16 @@ def search():
     #blah = get("countries", "code", "WHERE name == '%s'" % request.args['query'])[0][0]
     #print(blah)
     #return "poo"
-    session['country'] = countries[request.args['query']]
+    session['countrycode'] = countries[request.args['query']]
+    session['country'] = request.args['query']
     return render_template('searchedcountry.html')
 
 @app.route("/search/<category>")
 def fullsearch(category):
-    articles = newsapi(session['country'], category)
-    return render_template('results.html', articles = articles)
+    articles = newsapi(session['countrycode'], category)
+    newarticles = newyorktimesapi(session['country'], category)
+    print(newarticles)
+    return render_template('results.html', category = category, country = session['country'].capitalize(), articles = articles, newarticles = newarticles)
 
 if __name__ == "__main__":
     app.debug = True

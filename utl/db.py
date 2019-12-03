@@ -62,6 +62,12 @@ def setup():
                 name TEXT NOT NULL,
                 apikey TEXT NOT NULL
                 );""")
+    c.execute("""CREATE TABLE IF NOT EXISTS searches(
+                searchID INTEGER PRIMARY KEY AUTOINCREMENT,
+    			search TEXT,
+                userID INTEGER,
+                FOREIGN KEY (userID) REFERENCES users (userID)
+                );""")
     c.close()
     #pullcountries
 
@@ -95,6 +101,24 @@ def insert(tbl_name, values):
         return True
     except:
         return False
+
+def update_searches(user, newsearch):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    search2 = get(searches, search, "WHERE searchID = 1")
+    search3 = get(searches, search, "WHERE searchID = 2")
+    search4 = get(searches, search, "WHERE searchID = 3")
+    search5 = get(searches, search, "WHERE searchID = 4")
+
+    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 1 && userID = '%s'" % (newsearch, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 2 && userID = '%s'" % (search2, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 3 && userID = '%s'" % (search3, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 4 && userID = '%s'" % (search4, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 5 && userID = '%s'" % (search5, user))
+
+    db.commit()
+    c.close()
+    return True
 
 def insertCountry(ccode, cname):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create

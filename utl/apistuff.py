@@ -90,6 +90,8 @@ def newyorktimesapi(country, category):
 def guardianapi(country, category):
     if country.lower() == "united states of america":
         country = "us"
+    if country.lower() == "united kingdom of great britain and northern ireland":
+        country = "britain"
     #print(country)
     if category == "entertainment":
         category = "fashion"
@@ -154,7 +156,6 @@ def comparecountry(newcountry, countries):
                 if word == nword:
                     score += 1
         if score > 0:
-            score = score*1.0/len(countrylist)
             compares[country] = score
     keys = compares.keys()
     #print(keys)
@@ -162,6 +163,9 @@ def comparecountry(newcountry, countries):
         return "BOO"
     final = ""
     for country in keys:
-        if compares[country] >= compares[final]:
+        if compares[country] > compares[final]:
             final = country
+        if compares[country] == compares[final]:
+            if len(final.split(" ")) > len(country.split(" ")):
+                final = country
     return final

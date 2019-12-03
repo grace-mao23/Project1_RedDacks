@@ -14,6 +14,7 @@ app.secret_key = "Dacks"
 
 setup()
 countries = pullcountries()
+print(countries)
 
 @app.route("/")
 def root():

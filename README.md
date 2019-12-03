@@ -37,11 +37,18 @@ $ cd Project1_RedDacks
 $ pip install -r ./doc/requirements.txt
 ```
 
-_Step 3._ Run the app!
+_Step 3._ Run the app! If your default command 'python' uses python3:
 
 ```
 $ python app.py
 ```
+
+If not:
+
+```
+$ python3 app.py
+```
+The app REQUIRES python3.
 
 > A note about API keys: while we have provided default API keys, if for some reason the API is failing to implement this key, you will be allowed to enter your own, in which case you will have to obtain a free key using the links about in the API section.
 

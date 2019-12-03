@@ -3,6 +3,14 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
 
+maoG -- 2019-12-02 22:40
+- Added comments into the main python file and started the utl documents
+- Check in with team: remaining jobs
+- Search engine (the united states vs usa etc)
+- Recent searches
+- The Guardian API (database related work)
+- A couple ornaments to make the site easier to use
+
 zouJ -- 2019-12-01 22:48
 - Shows all parts of articles from newsapi, including picture and url to article
 - Show articles from newyorktimes based on category and country (using geo_facet return value)

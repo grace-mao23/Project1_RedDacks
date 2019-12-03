@@ -118,7 +118,7 @@ def search():
     #return "poo"
     #session['countrycode'] = countries[request.args['query']]
     #session['country'] = request.args['query']
-    country = comparecountry(request.args['query'], countries)
+    country = comparecountry(request.args['query'].lower(), countries)
     if country == "BOO":
         return redirect(url_for("home"))
     #update_searches(country, userID)

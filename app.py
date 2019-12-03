@@ -4,7 +4,7 @@
 # 2019-11-21
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from utl.db import insert, get, setup, update_user
+from utl.db import insert, get, setup, update_user, update_searches
 from utl.auth import auth, checkAuth, register
 from utl.apistuff import newsapi, pullcountries, newyorktimesapi, guardianapi, comparecountry
 import urllib.request, json, sqlite3, os
@@ -121,6 +121,7 @@ def search():
     country = comparecountry(request.args['query'], countries)
     if country == "BOO":
         return redirect(url_for("home"))
+    #update_searches(country, userID)
     session['countrycode'] = countries[country]
     session['country'] = country
     return render_template('searchedcountry.html', country = country)

@@ -47,6 +47,17 @@ def setup():
                 timepulled TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (countryID) REFERENCES countries (countryID)
                 );""")
+    c.execute("""CREATE TABLE IF NOT EXISTS Guardian(
+                nytID INTEGER PRIMARY KEY AUTOINCREMENT,
+                countryID INTEGER,
+    			title TEXT NOT NULL,
+    			author TEXT NOT NULL,
+                description TEXT,
+    			url TEXT NOT NULL,
+    			imageURL TEXT NOT NULL,
+                timepulled TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (countryID) REFERENCES countries (countryID)
+                );""")
     c.execute("""CREATE TABLE IF NOT EXISTS Keys(
                 name TEXT NOT NULL,
                 apikey TEXT NOT NULL

@@ -3,6 +3,12 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
 
+zouJ -- 2019-12-02 23:12
+- Shows articles from Guardian news
+- Wrote method for finding closest matching country name for query string based on words typed
+    -- Matches whole words, incorrect spelling is bad
+    -- Redirects back to home if no match is found
+
 zouJ -- 2019-12-01 22:48
 - Shows all parts of articles from newsapi, including picture and url to article
 - Show articles from newyorktimes based on category and country (using geo_facet return value)

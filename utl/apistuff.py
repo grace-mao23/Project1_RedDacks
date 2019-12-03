@@ -49,7 +49,10 @@ def newyorktimesapi(country, category):
     data = json.loads(response)
     results = data["results"]
     final = []
+    index = 0
     for l in results:
+        if index == 5:
+            break
         countries = l["geo_facet"]
         for place in countries:
             if place.lower() == country:
@@ -74,12 +77,40 @@ def newyorktimesapi(country, category):
             else:
                 temp.append("None")
             final.append(temp)
+        index+=1
     return final
 
-def guardianapi(category):
-    u = urllib.request.urlopen("https://content.guardianapis.com/environment?api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de")
+def guardianapi(country, category):
+    if country.lower() == "united states of america":
+        country = "us"
+    #print(country)
+    if category == "entertainment":
+        category = "fashion"
+    u = ""
+    if category == "sports":
+        u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&tag=theguardian/mainsection/sport&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country))
+    if category == "health":
+        u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&tag=society/health&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country))
+    if category == "general":
+        u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country))
+    else:
+        u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&tag={}/{}&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country, category, category))
     response = u.read()
     data = json.loads(response)
+    #print(data)
+    articles = data["response"]["results"]
+    final = []
+    index = 0
+    for article in articles:
+        if index == 5:
+            break
+        temp = []
+        temp.append(article["webTitle"])
+        temp.append(article["webUrl"])
+        final.append(temp)
+        index+=1
+    return final
+
 
 # def calenderapi(location):
 #     u = urllib.request.urlopen("https://calendarific.com/api/v2/holidays?api_key=afae9c6e72a9f688537453a3fafc6ce35b12e0ad&country=US&year=2019&type=national")
@@ -118,3 +149,27 @@ def pullcountries():
 #     # add to database
 #     insert("countries", ["NULL", data[0]['alpha2Code'], location])
 #     return data[0]['alpha2Code']
+
+def comparecountry(newcountry, countries):
+    compares = {}
+    compares[""] = 0
+    for country in countries:
+        score = 0
+        countrylist = country.split(" ")
+        n = newcountry.split(" ")
+        for word in countrylist:
+            for nword in n:
+                if word == nword:
+                    score += 1
+        if score > 0:
+            score = score*1.0/len(countrylist)
+            compares[country] = score
+    keys = compares.keys()
+    #print(keys)
+    if len(keys) == 1:
+        return "BOO"
+    final = ""
+    for country in keys:
+        if compares[country] >= compares[final]:
+            final = country
+    return final

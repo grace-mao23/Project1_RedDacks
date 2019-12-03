@@ -6,6 +6,7 @@
 <br>
 <h1> Category: {{category}} </h1>
 
+<h2> News api </h2>
 {% for article in articles %}
   <br>
   <h3> Title: {{article[0]}} </h3>
@@ -24,10 +25,17 @@
   <br>
 {% endfor %}
 
+<h2> New York Times </h2>
 {% for article in newarticles %}
   <br>
   {{article[0]}}
 {% endfor %}
 
+<br>
+<h2> Guardian </h2>
+{% for article in guardian %}
+  <br>
+  {{article[0]}}
+{% endfor %}
 
 {% endblock %}

@@ -6,7 +6,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from utl.db import insert, get, setup, update_user
 from utl.auth import auth, checkAuth, register
-from utl.apistuff import newsapi, pullcountries, newyorktimesapi
+from utl.apistuff import newsapi, pullcountries, newyorktimesapi, guardianapi, comparecountry
 import urllib.request, json, sqlite3, os
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ app.secret_key = "Dacks"
 
 setup()
 countries = pullcountries()
-print(countries)
+#print(countries)
 
 @app.route("/")
 def root():
@@ -111,16 +111,28 @@ def search():
     #blah = get("countries", "code", "WHERE name == '%s'" % request.args['query'])[0][0]
     #print(blah)
     #return "poo"
-    session['countrycode'] = countries[request.args['query']]
-    session['country'] = request.args['query']
-    return render_template('searchedcountry.html')
+    #session['countrycode'] = countries[request.args['query']]
+    #session['country'] = request.args['query']
+    country = comparecountry(request.args['query'], countries)
+    if country == "BOO":
+        return redirect(url_for("home"))
+    session['countrycode'] = countries[country]
+    session['country'] = country
+    return render_template('searchedcountry.html', country = country)
 
 @app.route("/search/<category>")
 def fullsearch(category):
     articles = newsapi(session['countrycode'], category)
     newarticles = newyorktimesapi(session['country'], category)
+    #guardian = guardianapi(session['country'], category)
+    #print(guardian)
     #print(newarticles)
-    return render_template('results.html', category = category, country = session['country'].capitalize(), articles = articles, newarticles = newarticles)
+    return render_template('results.html',
+                            category = category,
+                            country = session['country'].capitalize(),
+                            articles = articles,
+                            newarticles = newarticles)
+                            #guardian = guardian)
 
 if __name__ == "__main__":
     app.debug = True

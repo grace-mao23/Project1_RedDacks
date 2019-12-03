@@ -28,6 +28,7 @@ def root():
 # login page
 @app.route("/login")
 def login():
+    #print(session['userID'])
     if checkAuth():
         return redirect(url_for('home'))
     return render_template('login.html')
@@ -64,6 +65,8 @@ def reg():
 # homepage
 @app.route("/home")
 def home():
+    if not checkAuth():
+        return redirect(url_for('login'))
     # loading dog API
     url = "https://random.dog/woof.json"
     response = urllib.request.urlopen(url)
@@ -78,11 +81,15 @@ def home():
 # account settings page
 @app.route("/settings")
 def settings():
+    if not checkAuth():
+        return redirect(url_for('login'))
     return render_template('settings.html');
 
 # request to change account settings
 @app.route("/change_settings")
 def changing():
+    if not checkAuth():
+        return redirect(url_for('login'))
     # no password stuff entered --> change Username
     if (request.args['check_password'] == ''):
         if (request.args['new_password'] != '' or request.args['confirm_password'] != ''): #if other password fields filled out, something's wrong
@@ -113,6 +120,8 @@ def logout():
 # search page for a country
 @app.route("/search")
 def search():
+    if not checkAuth():
+        return redirect(url_for('login'))
     #blah = get("countries", "code", "WHERE name == '%s'" % request.args['query'])[0][0]
     #print(blah)
     #return "poo"
@@ -129,6 +138,8 @@ def search():
 # search page for a country and category
 @app.route("/search/<category>")
 def fullsearch(category):
+    if not checkAuth():
+        return redirect(url_for('login'))
     articles = newsapi(session['countrycode'], category)
     newarticles = newyorktimesapi(session['country'], category)
     #guardian = guardianapi(session['country'], category)

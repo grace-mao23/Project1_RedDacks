@@ -24,6 +24,7 @@ def register(username, password):
 
 def checkAuth():
     if "userID" in session:
-        return True
+        if session["userID"]:
+            return True
     else:
         return False

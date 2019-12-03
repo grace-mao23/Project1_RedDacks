@@ -3,9 +3,13 @@ import urllib.request, json
 from utl.db import get, insertCountry, insert
 
 # should take in the countryID
+"""
+    loads search results from the News API
+    pulls at most 5 articles due to the large quantity of articles in the News API database
+    displays title, author, description, a hyperlink to the article, and a hyperlink to the article's image
+"""
 def newsapi(location, category):
     u = urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country={}&category={}&apiKey=6b19e4b53ded4360bec67947b47a27de".format(location, category))
-    #u = urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country=us&category=businesss&apiKey=6b19e4b53ded4360bec67947b47a27de"
     response = u.read()
     data = json.loads(response)
     articles = data["articles"]
@@ -32,6 +36,9 @@ def newsapi(location, category):
 
     return final
 
+"""
+    similar to above, but for the New York Times API
+"""
 def newyorktimesapi(country, category):
     #business = business
     #science = science
@@ -111,21 +118,6 @@ def guardianapi(country, category):
         index+=1
     return final
 
-
-# def calenderapi(location):
-#     u = urllib.request.urlopen("https://calendarific.com/api/v2/holidays?api_key=afae9c6e72a9f688537453a3fafc6ce35b12e0ad&country=US&year=2019&type=national")
-#     response = u.read()
-#     data = json.loads(response)
-#     print(data)
-#     # data = data["response"]["holidays"]
-#     # final = []
-#     # for i in range(0, 5):
-#     #     temp = []
-#     #     temp.append(i["name"])
-#     #     temp.append(i["description"])
-#     #     temp.append(i["date"]["iso"])
-#     #     final.append(temp)
-#     # return final
 
 def pullcountries():
     u = urllib.request.urlopen("https://restcountries.eu/rest/v2/all")

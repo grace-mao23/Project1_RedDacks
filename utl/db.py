@@ -65,6 +65,7 @@ def setup():
     c.execute("""CREATE TABLE IF NOT EXISTS searches(
                 searchID INTEGER PRIMARY KEY AUTOINCREMENT,
     			search TEXT,
+                searchNum INTEGER,
                 userID INTEGER,
                 FOREIGN KEY (userID) REFERENCES users (userID)
                 );""")
@@ -105,16 +106,16 @@ def insert(tbl_name, values):
 def update_searches(user, newsearch):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    search2 = get(searches, search, "WHERE searchID = 1")
-    search3 = get(searches, search, "WHERE searchID = 2")
-    search4 = get(searches, search, "WHERE searchID = 3")
-    search5 = get(searches, search, "WHERE searchID = 4")
+    search2 = get(searches, search, "WHERE searchNum = 1 and userID = '%s'" % (user))
+    search3 = get(searches, search, "WHERE searchNum = 2 and userID = '%s'" % (user))
+    search4 = get(searches, search, "WHERE searchNum = 3 and userID = '%s'" % (user))
+    search5 = get(searches, search, "WHERE searchNum = 4 and userID = '%s'" % (user))
 
-    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 1 && userID = '%s'" % (newsearch, user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 2 && userID = '%s'" % (search2, user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 3 && userID = '%s'" % (search3, user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 4 && userID = '%s'" % (search4, user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchID = 5 && userID = '%s'" % (search5, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 1 && userID = '%s'" % (newsearch, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 2 && userID = '%s'" % (search2, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 3 && userID = '%s'" % (search3, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 4 && userID = '%s'" % (search4, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 5 && userID = '%s'" % (search5, user))
 
     db.commit()
     c.close()

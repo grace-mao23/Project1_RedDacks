@@ -1,7 +1,7 @@
 # RedDacks: Nahi Khan, Grace Mao, Sophie Nichol, Jackson Zou
 # SoftDev1 pd9
 # P01 - ArRESTed Development
-# 2019-11-21
+# 2019-12-04
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from utl.db import insert, get, setup, update_user, update_searches

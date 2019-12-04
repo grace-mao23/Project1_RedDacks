@@ -7,8 +7,15 @@ from numbers import Number
 from flask import current_app, g
 #from utl.apistuff import pullcountries
 
+"""
+    This module deals with interaction with the database
+    Uses SQLite commands
+"""
+
+
 DB_FILE = "data/database.db"
 
+# setting up the database
 def setup():
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -70,7 +77,6 @@ def setup():
                 FOREIGN KEY (userid) REFERENCES users (userid)
                 );""")
     c.close()
-    #pullcountries
 
 # Return the column types of a table
 def header_types(tbl_name):
@@ -80,7 +86,6 @@ def header_types(tbl_name):
     heads = c.fetchall()
     c.close()
     return [str(head[1]) for head in heads]
-
 
 # Insert a row into a table given the values
 def insert(tbl_name, values):
@@ -103,6 +108,7 @@ def insert(tbl_name, values):
     except:
         return False
 
+# updates the recent searches of a user
 def update_searches(user, newsearch):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -116,7 +122,7 @@ def update_searches(user, newsearch):
 
     c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 1 and userid = %s" % (newsearch, user))
     #print(get("searches", "search", "WHERE searchNum = 1 and userid = %s" % (user)))
-    if (search2 != []):
+    if (search2 != []): # should never happen, but just in case
         c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 2 and userid = %s" % (search2[0][0], user))
     if (search3 != []):
         c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 3 and userid = %s" % (search3[0][0], user))
@@ -131,6 +137,7 @@ def update_searches(user, newsearch):
     c.close()
     return True
 
+# insert a country into the database
 def insertCountry(ccode, cname):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -139,6 +146,7 @@ def insertCountry(ccode, cname):
     db.commit()
     c.close()
 
+# SELECT function
 def get(tbl_name, column, conditional=""):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -147,6 +155,7 @@ def get(tbl_name, column, conditional=""):
     c.close()
     return [list(value) for value in values]
 
+# update function for account settings
 def update_user(username, field, newvalue):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()

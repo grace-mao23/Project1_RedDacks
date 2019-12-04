@@ -3,13 +3,17 @@ P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
 
-<<<<<<< HEAD
+zouJ -- 2019-12-03 20:08
+- Shows all information from all articles
+- Changed country names so that no errors will result from bad api call
+- Tells user if no articles are found for each 
+
 zouJ -- 2019-12-02 23:12
 - Shows articles from Guardian news
 - Wrote method for finding closest matching country name for query string based on words typed
     -- Matches whole words, incorrect spelling is bad
     -- Redirects back to home if no match is found
-=======
+
 maoG -- 2019-12-02 22:40
 - Added comments into the main python file and started the utl documents
 - Check in with team: remaining jobs

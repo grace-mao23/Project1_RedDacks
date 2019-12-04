@@ -19,7 +19,7 @@ countries = pullcountries()
 
 
 
-#print(countries)
+print(countries)
 
 # root route
 @app.route("/")
@@ -113,7 +113,7 @@ def home():
 # account settings page
 @app.route("/settings")
 def settings():
-    print(session["e1"], session["e2"], session["message"])
+    #print(session["e1"], session["e2"], session["message"])
     if not checkAuth():
         return redirect(url_for('login'))
     return render_template('settings.html', e1 = session["e1"], e2 = session["e2"], message=session["message"]);
@@ -123,7 +123,7 @@ def settings():
 def changing():
     session["e1"] = False
     session["e2"] = False
-    print(get("users", "*", ""))
+    #print(get("users", "*", ""))
     if not checkAuth():
         return redirect(url_for('login'))
     # no password stuff entered --> change Username
@@ -182,9 +182,9 @@ def search():
         return redirect(url_for('home'))
     session["error"] = False
     username = session["currentID"]
-    print(username)
+    #print(username)
     userID = get("users", "userid", "WHERE username = '%s'" % username)[0][0]
-    print(userID)
+    #print(userID)
     update_searches(userID, country)
     session['countrycode'] = countries[country]
     session['country'] = country

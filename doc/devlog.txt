@@ -49,7 +49,6 @@ maoG -- 2019-12-02 22:40
 - Recent searches
 - The Guardian API (database related work)
 - A couple ornaments to make the site easier to use
->>>>>>> b9143f122b659a31502c7be6b5a465da6a048a1a
 
 nicholS -- 2019-12-02 18:58
 - made database for Guardian

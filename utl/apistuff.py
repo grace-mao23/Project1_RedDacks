@@ -2,6 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for
 import urllib.request, json
 from utl.db import get, insertCountry, insert
 
+"""
+    This module contains all things related to our APIs
+    It mainly runs the search engine
+"""
+
 # should take in the countryID
 """
     loads search results from the News API
@@ -87,8 +92,10 @@ def newyorktimesapi(country, category):
         index+=1
     return final
 
+# the guardian API
 def guardianapi(country, category):
     country = country.lower()
+    # conversions to match the guardian API system
     if country == "united states of america":
         country = "us"
     if country == "united kingdom of great britain and northern ireland":
@@ -148,7 +155,7 @@ def guardianapi(country, category):
         index+=1
     return final
 
-
+# initial setup of the country table to obtain country codes etc
 def pullcountries():
     u = urllib.request.urlopen("https://restcountries.eu/rest/v2/all")
     response = u.read()
@@ -172,6 +179,7 @@ def pullcountries():
 #     insert("countries", ["NULL", data[0]['alpha2Code'], location])
 #     return data[0]['alpha2Code']
 
+# string converter to take in strange requests for countries
 def comparecountry(newcountry, countries):
     compares = {}
     compares[""] = 0

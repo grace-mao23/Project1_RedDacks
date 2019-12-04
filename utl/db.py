@@ -113,6 +113,7 @@ def update_searches(user, newsearch):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
+    #rotate the searches down to make room for the most recent search
     search2 = get("searches", "search", "WHERE searchNum = 1 and userid = '%s'" % (user))
     search3 = get("searches", "search", "WHERE searchNum = 2 and userid = '%s'" % (user))
     search4 = get("searches", "search", "WHERE searchNum = 3 and userid = '%s'" % (user))
@@ -146,7 +147,7 @@ def insertCountry(ccode, cname):
     db.commit()
     c.close()
 
-# SELECT function
+# gets a column of a given database given a conditional
 def get(tbl_name, column, conditional=""):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()

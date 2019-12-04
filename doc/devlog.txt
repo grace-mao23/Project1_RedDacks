@@ -2,6 +2,12 @@ RedDacks: Nahi Khan, Grace Mao, Sophie Nichol, Jackson Zou
 P#01 - ArRESTed Development
 SoftDev1 Pd9
 2019-12-04
+
+nicholS -- 2019-12-04 1:01
+- displayed Recent Searches on home homepage
+- linked displays to their searched pages
+- added comments to db.py
+
 khanN -- 2019-12-03 20:16 (thanks for the 20:08 merge error jackson)
 - deleted displayarticle due to results fulfilling the job
 - Attempted to create error pop up for non-country search
@@ -10,6 +16,11 @@ zouJ -- 2019-12-03 20:08
 - Shows all information from all articles
 - Changed country names so that no errors will result from bad api call
 - Tells user if no articles are found for each
+
+nicholS -- 2019-12-03 7:22
+- made database for recent Searches
+- initialized 5 rows per user in auth
+- made a function to update the searches every time the user Searches
 
 zouJ -- 2019-12-02 23:12
 - Shows articles from Guardian news
@@ -25,6 +36,9 @@ maoG -- 2019-12-02 22:40
 - The Guardian API (database related work)
 - A couple ornaments to make the site easier to use
 >>>>>>> b9143f122b659a31502c7be6b5a465da6a048a1a
+
+nicholS -- 2019-12-02 18:58
+- made database for Guardian
 
 zouJ -- 2019-12-01 22:48
 - Shows all parts of articles from newsapi, including picture and url to article
@@ -72,6 +86,11 @@ maoG -- 2019-11-26 22:07
 - Corrected component map and database diagram to reflect scrapping the
 holiday API (requires money that we don't have)
 - Updated README to reflect these design doc changes
+
+nicholS -- 2019-11-26 20:32
+- Made function to pull countries from API and store them in the database
+- Wrote new insert method because there were problems with the original
+- Fixed a lot of problems with importing methods
 
 zouJ -- 2019-11-25 22:24
 - Able to see articles from news api when searching up country, however the country name has to match exactly or else it breaks, might

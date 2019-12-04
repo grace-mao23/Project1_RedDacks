@@ -21,6 +21,7 @@ countries = pullcountries()
 # root route
 @app.route("/")
 def root():
+    print(countries)
     if checkAuth(): #if you've already logged in
         return redirect(url_for('home'))
     return redirect(url_for('login'))
@@ -130,7 +131,9 @@ def search():
     country = comparecountry(request.args['query'].lower(), countries)
     if country == "BOO":
         return redirect(url_for("home"))
-    #update_searches(country, userID)
+    username = session["currentID"]
+    userID = get("users", "userID", "WHERE username = '%s'" % username)[0][0]
+    update_searches(userID, country)
     session['countrycode'] = countries[country]
     session['country'] = country
     return render_template('searchedcountry.html', country = country)
@@ -142,15 +145,15 @@ def fullsearch(category):
         return redirect(url_for('login'))
     articles = newsapi(session['countrycode'], category)
     newarticles = newyorktimesapi(session['country'], category)
-    #guardian = guardianapi(session['country'], category)
+    guardian = guardianapi(session['country'], category)
     #print(guardian)
     #print(newarticles)
     return render_template('results.html',
                             category = category,
                             country = session['country'].capitalize(),
                             articles = articles,
-                            newarticles = newarticles)
-                            #guardian = guardian)
+                            newarticles = newarticles,
+                            guardian = guardian)
 
 if __name__ == "__main__":
     app.debug = True

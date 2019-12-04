@@ -88,22 +88,50 @@ def newyorktimesapi(country, category):
     return final
 
 def guardianapi(country, category):
-    if country.lower() == "united states of america":
+    country = country.lower()
+    if country == "united states of america":
         country = "us"
-    if country.lower() == "united kingdom of great britain and northern ireland":
+    if country == "united kingdom of great britain and northern ireland":
         country = "britain"
-    #print(country)
+    if country == "bolivia (plurinational state of)":
+        country = "bolivia"
+    if country == "bosnia and herzegovina":
+        country = "bosnia"
+    if country == "lao people's democratic republic":
+        country = "lao"
+    if country == "macedonia (the former yugoslav republic of)":
+        country = "macedonia"
+    if country == "micronesia (federated states of)":
+        country = "micronesia"
+    if country == "moldova (republic of)":
+        country = "moldova"
+    if country == "korea (democratic people's republic of)":
+        country = "korea"
+    if country == "palestine, state of":
+        country = "palestine"
+    if country == "republic of kosovo":
+        country = "kosovo"
+    if country == "syrian arab republic":
+        country = "syria"
+    if country == "venezuela (bolivarian republic of)":
+        country = "venezuela"
+    country = country.replace(" ","")
+    print(country)
     if category == "entertainment":
         category = "fashion"
     u = ""
     if category == "sports":
         u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&tag=theguardian/mainsection/sport&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country))
+        print("u1")
     if category == "health":
         u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&tag=society/health&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country))
+        print("u2")
     if category == "general":
         u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country))
+        print("u3")
     else:
         u = urllib.request.urlopen("https://content.guardianapis.com/search?q={}&tag={}/{}&api-key=e7b0c4b8-b09e-43a3-b5c7-00898671b7de".format(country, category, category))
+        print("u4")
     response = u.read()
     data = json.loads(response)
     #print(data)

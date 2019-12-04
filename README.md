@@ -50,6 +50,10 @@ $ python3 app.py
 ```
 The app REQUIRES python3.
 
+_Step 4._ Be patient when the app is starting up. Our software is 
+pulling from the Countries API to give you a fresh experience! Get a cup 
+of coffee :coffee:
+
 > A note about API keys: while we have provided default API keys, if for some reason the API is failing to implement this key, you will be allowed to enter your own, in which case you will have to obtain a free key using the links about in the API section.
 
 Copyright &copy; 2019 RedDacks

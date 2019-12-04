@@ -130,7 +130,7 @@ def search():
     #session['country'] = request.args['query']
     country = comparecountry(request.args['query'].lower(), countries)
     if country == "BOO":
-        return redirect(url_for("home"))
+        return render_template('home.html', error = True)
     username = session["currentID"]
     userID = get("users", "userID", "WHERE username = '%s'" % username)[0][0]
     update_searches(userID, country)

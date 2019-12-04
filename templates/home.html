@@ -36,7 +36,18 @@
             </div>
           {% else %}
             <div class = "primary callout">
-            Search a country
+            Recent Searches:
+            <br>
+            <a href= "{{ url_for('recent', country=recent1)  }}">{{ recent1 }}</a>
+            <br>
+            <a href= "{{ url_for('recent', country=recent2)  }}">{{ recent2 }}</a>
+            <br>
+            <a href= "{{ url_for('recent', country=recent3)  }}">{{ recent3 }}</a>
+            <br>
+            <a href= "{{ url_for('recent', country=recent4)  }}">{{ recent4 }}</a>
+            <br>
+            <a href= "{{ url_for('recent', country=recent5)  }}">{{ recent5 }}</a>
+            <br>
             </div>
           {% endif %}
         </div>

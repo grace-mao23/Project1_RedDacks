@@ -107,18 +107,25 @@ def update_searches(user, newsearch):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    search2 = get("searches", "search", "WHERE searchNum = 1 and userID = '%s'" % (user))
-    search3 = get("searches", "search", "WHERE searchNum = 2 and userID = '%s'" % (user))
-    search4 = get("searches", "search", "WHERE searchNum = 3 and userID = '%s'" % (user))
-    search5 = get("searches", "search", "WHERE searchNum = 4 and userID = '%s'" % (user))
+    search2 = get("searches", "search", "WHERE searchNum = 1 and userid = '%s'" % (user))
+    search3 = get("searches", "search", "WHERE searchNum = 2 and userid = '%s'" % (user))
+    search4 = get("searches", "search", "WHERE searchNum = 3 and userid = '%s'" % (user))
+    search5 = get("searches", "search", "WHERE searchNum = 4 and userid = '%s'" % (user))
 
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 1" % (newsearch))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 2 and userID = %s" % (search2[0][0], user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 3 and userID = %s" % (search3[0][0], user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 4 and userID = %s" % (search4[0][0], user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 5 and userID = %s" % (search5[0][0], user))
+    #print(get("searches","*",""))
 
-    print(get("searches", "search", "WHERE searchNum = 1 and userID = %s" % (user)))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 1 and userid = %s" % (newsearch, user))
+    #print(get("searches", "search", "WHERE searchNum = 1 and userid = %s" % (user)))
+    if (search2 != []):
+        c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 2 and userid = %s" % (search2[0][0], user))
+    if (search3 != []):
+        c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 3 and userid = %s" % (search3[0][0], user))
+    if (search4 != []):
+        c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 4 and userid = %s" % (search4[0][0], user))
+    if (search5 != []):
+        c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 5 and userid = %s" % (search5[0][0], user))
+
+    #print(get("searches", "search", "WHERE searchNum = 1 and userid = %s" % (user)))
 
     db.commit()
     c.close()

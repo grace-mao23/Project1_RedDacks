@@ -16,12 +16,13 @@ app.secret_key = "Dacks"
 # set up database connection
 setup()
 countries = pullcountries()
+
 #print(countries)
 
 # root route
 @app.route("/")
 def root():
-    print(countries)
+    #print(countries)
     if checkAuth(): #if you've already logged in
         return redirect(url_for('home'))
     return redirect(url_for('login'))

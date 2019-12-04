@@ -7,6 +7,9 @@
 <h1> Category: {{category}} </h1>
 
 <h2> News api </h2>
+{% if articles|length == 0 %}
+  Sorry no articles :(
+{% endif %}
 {% for article in articles %}
   <br>
   <h3> Title: {{article[0]}} </h3>
@@ -25,17 +28,35 @@
   <br>
 {% endfor %}
 
-<h2> New York Times </h2>
-{% for article in newarticles %}
-  <br>
-  {{article[0]}}
-{% endfor %}
-
 <br>
 <h2> Guardian </h2>
+{% if guardian|length == 0 %}
+  Sorry no articles :(
+{% endif %}
 {% for article in guardian %}
   <br>
   {{article[0]}}
+  <br>
+  {{article[1]}}
+{% endfor %}
+
+<h2> New York Times </h2>
+{% if newarticles|length == 0 %}
+  Sorry no articles :(
+{% endif %}
+{% for article in newarticles %}
+  <br>
+  Title: {{article[0]}}
+  <br>
+  Author: {{article[1]}}
+  <br>
+  Description: {{article[2]}}
+  <br>
+  <a href="{{article[3]}}">Click here to go article</a>
+  <br>
+  {% if article[4] %}
+  <img src="{{article[4]}}" alt="">
+  {% endif %}
 {% endfor %}
 
 {% endblock %}

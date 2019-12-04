@@ -79,7 +79,19 @@ def home():
         response = urllib.request.urlopen(url)
         response = response.read()
         data = json.loads(response)
-    return render_template('home.html', dog=data['url'])
+    username = session["currentID"]
+    userID = get("users", "userid", "WHERE username = '%s'" % username)[0][0]
+    r1 = get("searches", "search", "WHERE searchNum = 1 AND userid = '%s'" % userID)[0][0]
+    r2 = get("searches", "search", "WHERE searchNum = 2 AND userid = '%s'" % userID)[0][0]
+    r3 = get("searches", "search", "WHERE searchNum = 3 AND userid = '%s'" % userID)[0][0]
+    r4 = get("searches", "search", "WHERE searchNum = 4 AND userid = '%s'" % userID)[0][0]
+    r5 = get("searches", "search", "WHERE searchNum = 5 AND userid = '%s'" % userID)[0][0]
+    return render_template('home.html', dog=data['url'],
+                                        recent1 = r1,
+                                        recent2 = r2,
+                                        recent3 = r3,
+                                        recent4 = r4,
+                                        recent5 = r5)
 
 # account settings page
 @app.route("/settings")
@@ -140,6 +152,10 @@ def search():
     update_searches(userID, country)
     session['countrycode'] = countries[country]
     session['country'] = country
+    return render_template('searchedcountry.html', country = country)
+
+@app.route("/<country>/recent")
+def recent(country):
     return render_template('searchedcountry.html', country = country)
 
 # search page for a country and category

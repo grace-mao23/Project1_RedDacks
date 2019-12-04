@@ -61,6 +61,7 @@ def reg():
         return render_template('signup.html', error=True, message="Username Already Taken")
     if register(request.args['username'], request.args['password']): #successful registration
         session["userID"] = True
+        session["currentID"] = request.args['username']
         return redirect(url_for("home"))
 
 # homepage
@@ -132,7 +133,9 @@ def search():
     if country == "BOO":
         return render_template('home.html', error = True)
     username = session["currentID"]
-    userID = get("users", "userID", "WHERE username = '%s'" % username)[0][0]
+    print(username)
+    userID = get("users", "userid", "WHERE username = '%s'" % username)[0][0]
+    print(userID)
     update_searches(userID, country)
     session['countrycode'] = countries[country]
     session['country'] = country

@@ -17,11 +17,17 @@ app.secret_key = "Dacks"
 setup()
 countries = pullcountries()
 
+
+
 #print(countries)
 
 # root route
 @app.route("/")
 def root():
+    session["error"] = False
+    session["message"] = ""
+    session["e1"] = False
+    session["e2"] = False
     #print(countries)
     if checkAuth(): #if you've already logged in
         return redirect(url_for('home'))
@@ -33,14 +39,14 @@ def login():
     #print(session['userID'])
     if checkAuth():
         return redirect(url_for('home'))
-    return render_template('login.html')
+    return render_template('login.html', error=session["error"], message=session['message'])
 
 # signup page
 @app.route("/signup")
 def signup():
     if checkAuth():
         return redirect(url_for('home'))
-    return render_template('signup.html')
+    return render_template('signup.html', error=session["error"], message=session["message"])
 
 # authentication page --> checking if the login is correct
 @app.route("/auth")
@@ -48,21 +54,32 @@ def authen():
     if auth(request.args['username'], request.args['password']): #authentication method imported
         session["userID"] = True
         session["currentID"] = request.args['username']
+        session["error"] = False
         return redirect(url_for('home'))
     if get("users", "username", "WHERE username = '%s'" % request.args['username']): #if the username exists
-        return render_template('login.html', error=True, message='Password Incorrect')
-    return render_template('login.html', error=True, message='Username Not Found') #username doesn't exist
+        session["error"] = True
+        session["message"] = "Password Incorrect"
+        return redirect(url_for('login'))
+        #return render_template('login.html', error=True, message='Password Incorrect')
+    session["error"] = True
+    session["message"] = "Username Not Found"
+    return redirect(url_for('login')) #username doesn't exist
 
 # authentication of signup --> checking if the registration is valid
 @app.route("/register")
 def reg():
     if (request.args['password'] != request.args['password2']): #passwords entered don't match
-        return render_template('signup.html', error=True, message="Passwords Don't Match")
-    if (request.args['username'] == get("users", "username", "WHERE username = '%s'" % request.args['username'])): #username already in database
-        return render_template('signup.html', error=True, message="Username Already Taken")
+        session["error"] = True
+        session["message"] = "Passwords Don't Match"
+        return redirect(url_for('signup'))
+    if (request.args['username'] == get("users", "username", "WHERE username = '%s'" % request.args['username'])[0][0]): #username already in database
+        session["error"] = True
+        session["message"] = "Username Already Taken"
+        return redirect(url_for('signup'))
     if register(request.args['username'], request.args['password']): #successful registration
         session["userID"] = True
         session["currentID"] = request.args['username']
+        session["error"] = False
         return redirect(url_for("home"))
 
 # homepage
@@ -79,38 +96,55 @@ def home():
         response = urllib.request.urlopen(url)
         response = response.read()
         data = json.loads(response)
-    return render_template('home.html', dog=data['url'])
+    return render_template('home.html', dog=data['url'], error=session["error"], message=session["message"])
 
 # account settings page
 @app.route("/settings")
 def settings():
+    print(session["e1"], session["e2"], session["message"])
     if not checkAuth():
         return redirect(url_for('login'))
-    return render_template('settings.html');
+    return render_template('settings.html', e1 = session["e1"], e2 = session["e2"], message=session["message"]);
 
 # request to change account settings
 @app.route("/change_settings")
 def changing():
+    session["e1"] = False
+    session["e2"] = False
+    print(get("users", "*", ""))
     if not checkAuth():
         return redirect(url_for('login'))
     # no password stuff entered --> change Username
     if (request.args['check_password'] == ''):
         if (request.args['new_password'] != '' or request.args['confirm_password'] != ''): #if other password fields filled out, something's wrong
-            return render_template('settings.html', error2=True, message="Necessary Fields Not Filled Out")
+            session["e2"] = True
+            session["message"]="Necessary Fields Not Filled Out"
+            return redirect(url_for('settings'))
         # change Username
         if (request.args['newusername'] == ''): #if username fields not filled out, something's wrong
-            return render_template('settings.html', error1=True, message="Necessary Fields Not Filled Out")
-        if (request.args['newusername'] == get("users", "username", "WHERE username = '%s'" % request.args['newusername'])[0][0]): #username is in database already
-            return render_template('settings.html', error1=True, message="Username Already Taken")
+            session["e1"] = True
+            session["message"]="Necessary Fields Not Filled Out"
+            return redirect(url_for('settings'))
+        if (get("users", "username", "WHERE username = '%s'" % request.args['newusername']) != []): #username is in database already
+            session["e1"] = True
+            session["message"]="Username Already Taken"
+            return redirect(url_for('settings'))
         update_user(session['currentID'], "username", request.args['newusername']) #updating the database imported
+        session["currentID"] = request.args['newusername']
         return render_template('settings.html', changed1=True)
     else: # password being changed
         if (request.args['new_password'] == '' or request.args['confirm_password'] == ''): #if password fields not filled out, something's wrong
-            return render_template('settings.html', error2=True, message="Necessary Fields Not Filled Out")
+            session["e2"] = True
+            session["message"]="Necessary Fields Not Filled Out"
+            return redirect(url_for('settings'))
         if (request.args['check_password'] != get("users", "hashpassword", "WHERE username = '%s'" % session['currentID'])[0][0]): #old password not correct
-            return render_template('settings.html', error2=True, message="Incorrect Password")
+            session["e2"] = True
+            session["message"]="Incorrect Password"
+            return redirect(url_for('settings'))
         if (request.args['new_password'] != request.args['confirm_password']): #passwords don't match
-            return render_template('settings.html', error2=True, message="Passwords Don't Match")
+            session["e2"] = True
+            session["message"]="Passwords Don't Match"
+            return redirect(url_for('settings'))
         update_user(session['currentID'], "hashpassword", request.args['new_password']) #updating the database
         return render_template('settings.html', changed2=True)
 
@@ -132,7 +166,9 @@ def search():
     #session['country'] = request.args['query']
     country = comparecountry(request.args['query'].lower(), countries)
     if country == "BOO":
-        return render_template('home.html', error = True)
+        session["error"] = True
+        return redirect(url_for('home'))
+    session["error"] = False
     username = session["currentID"]
     print(username)
     userID = get("users", "userid", "WHERE username = '%s'" % username)[0][0]

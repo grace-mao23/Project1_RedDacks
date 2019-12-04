@@ -66,8 +66,8 @@ def setup():
                 searchID INTEGER PRIMARY KEY AUTOINCREMENT,
     			search TEXT,
                 searchNum INTEGER,
-                userID INTEGER,
-                FOREIGN KEY (userID) REFERENCES users (userID)
+                userid INTEGER,
+                FOREIGN KEY (userid) REFERENCES users (userid)
                 );""")
     c.close()
     #pullcountries
@@ -113,10 +113,12 @@ def update_searches(user, newsearch):
     search5 = get("searches", "search", "WHERE searchNum = 4 and userID = '%s'" % (user))
 
     c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 1" % (newsearch))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 2 and userID = '%s'" % (search2, user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 3 and userID = '%s'" % (search3, user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 4 and userID = '%s'" % (search4, user))
-    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 5 and userID = '%s'" % (search5, user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 2 and userID = %s" % (search2[0][0], user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 3 and userID = %s" % (search3[0][0], user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 4 and userID = %s" % (search4[0][0], user))
+    c.execute("UPDATE searches SET search = '%s' WHERE searchNum = 5 and userID = %s" % (search5[0][0], user))
+
+    print(get("searches", "search", "WHERE searchNum = 1 and userID = %s" % (user)))
 
     db.commit()
     c.close()
